@@ -18,31 +18,31 @@ const Team = []
 // question for every one
 
 function employeeQuestions(){
-    const Questions =inquirer.prompt([
+    const questions = [
         {
             type: "input",
             name: "name",
-            message: "Pleas enter name!"
+            message: "Pleas enter name."
 
         },
 
         {
             type: "input",
             id: "id",
-            message: "Pleas enter ID!"
+            message: "Pleas enter ID."
 
         },
 
         {
             type:"input",
             email: "email",
-            message: "Pleas enter the email!"
+            message: "Pleas enter the email."
         },
 
         {
             type: "list",
             name: "Title",
-            message: "Pleas choose the title!",
+            message: "Pleas choose the title.",
             choices:[
 
                 "Engineer",
@@ -50,39 +50,78 @@ function employeeQuestions(){
                 "Manager"
             ]
         }
-    ]).then(function(data){
-       
-        if (data.Title === "Engineer"){
+    ]
+    inquirer.prompt(questions).then(data =>{
 
-            showEngineerQuestions(data);
-        }else if(data.Title === "Intern"){
+        
+            if (data.Title === "Engineer"){
 
-            showInternQuestions(data);
-        }else if(data.Title === "Manager"){
-            showManagerQuestions(data);
-        }
-    })
+                showEngineerQuestions(data);
+            }else if(data.Title === "Intern"){
+
+                showInternQuestions(data);
+            }else if(data.Title === "Manager"){
+                showManagerQuestions(data);
+            }
+        })
+        Team.push(questions)
 }
 
-employeeQuestions();
+// function call to employeeQuestions
+employeeQuestions()
+
+//Manager Questions
+function showManagerQuestions(more){
+    const managerQuestions = [
+        {
+            type: "input",
+            name: "officeNumber",
+            message: "Pleas enter officeNumber."
+        }
+    ]
+    inquirer.prompt(managerQuestions ).then(data =>{
+        let moreInfo = new Manager(more.name,more.id, more.email, more.officeNumber)
+        Team.push(moreInfo)
+        addMore()
+    });
+}
+
 //Engineer Questions
 
 function  showEngineerQuestions(more){
-    const EngineerQuestions = inquirer.prompt([
+    const EngineerQuestions = [
         {
             type: "input",
             name: "Github",
-            message: "Pleas enter Github username!"
+            message: "Pleas enter Github username."
 
         }
-    ]).then(function(data){
-        let engMore = new Engineer(more.name,more.id, more.email, more.GitHub)
-        Team.push(engMore)
+    ]
+    inquirer.prompt(EngineerQuestions ).then(data =>{
+        let moreInfo = new Engineer(more.name,more.id, more.email, more.GitHub)
+        Team.push(moreInfo)
         addMore()
     });
 
 }
 
+
+// Intern Question
+function  showInternQuestions(more){
+    const InternQuestions = [
+        {
+            type: "input",
+            name: "school",
+            message: "Pleas enter your school."
+        }
+    ]
+    inquirer.prompt(InternQuestions).then(data =>{
+        let moreInfo = Intern(more.name, more.id, more.email, more.school)
+        Team.push(moreInfo)
+        addMore()
+
+    })
+}
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
