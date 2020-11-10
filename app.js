@@ -9,10 +9,80 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const Employee = require("./lib/Employee");
 
-
+const Team = []
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+
+// question for every one
+
+function employeeQuestions(){
+    const Questions =inquirer.prompt([
+        {
+            type: "input",
+            name: "name",
+            message: "Pleas enter name!"
+
+        },
+
+        {
+            type: "input",
+            id: "id",
+            message: "Pleas enter ID!"
+
+        },
+
+        {
+            type:"input",
+            email: "email",
+            message: "Pleas enter the email!"
+        },
+
+        {
+            type: "list",
+            name: "Title",
+            message: "Pleas choose the title!",
+            choices:[
+
+                "Engineer",
+                "Intern",
+                "Manager"
+            ]
+        }
+    ]).then(function(data){
+       
+        if (data.Title === "Engineer"){
+
+            showEngineerQuestions(data);
+        }else if(data.Title === "Intern"){
+
+            showInternQuestions(data);
+        }else if(data.Title === "Manager"){
+            showManagerQuestions(data);
+        }
+    })
+}
+
+employeeQuestions();
+//Engineer Questions
+
+function  showEngineerQuestions(more){
+    const EngineerQuestions = inquirer.prompt([
+        {
+            type: "input",
+            name: "Github",
+            message: "Pleas enter Github username!"
+
+        }
+    ]).then(function(data){
+        let engMore = new Engineer(more.name,more.id, more.email, more.GitHub)
+        Team.push(engMore)
+        addMore()
+    });
+
+}
+
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
