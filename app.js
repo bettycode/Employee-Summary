@@ -43,9 +43,9 @@ function employeeQuestions(){
             message: "Pleas choose the title.",
             choices:[
 
+                "Manager",
                 "Engineer",
-                "Intern",
-                "Manager"
+                "Intern"
             ]
         }
     ]
@@ -60,6 +60,8 @@ function employeeQuestions(){
                 showInternQuestions(data);
             }else if(data.Title === "Manager"){
                 showManagerQuestions(data);
+            }else{
+                creatTeam()
             }
         })
         team.push(questions)
@@ -84,8 +86,13 @@ function showManagerQuestions(){
             data.email, 
             data.officeNumber)
         team.push(moreInfo)
-        addMore()
+        creatTeam()
     });
+}
+
+//creatTeam
+function creatTeam(){
+    
 }
 
 //Engineer Questions
@@ -106,7 +113,7 @@ function  showEngineerQuestions(){
             data.email, 
             data.GitHub)
         team.push(moreInfo)
-        addMore()
+        creatTeam()
     });
 
 }
@@ -128,7 +135,7 @@ function  showInternQuestions(){
             data.email, 
             data.school)
         Team.push(moreInfo)
-        addMore()
+        creatTeam()
 
     })
 }
