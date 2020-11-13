@@ -10,13 +10,11 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 const Employee = require("./lib/Employee");
+const { ADDRGETNETWORKPARAMS } = require("dns");
 
-const Team = []
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
+const team = []
 
-// question for every one
-
+  
 function employeeQuestions(){
     const questions = [
         {
@@ -28,14 +26,14 @@ function employeeQuestions(){
 
         {
             type: "input",
-            id: "id",
+            name: "id",
             message: "Pleas enter ID."
 
         },
 
         {
             type:"input",
-            email: "email",
+            name: "email",
             message: "Pleas enter the email."
         },
 
@@ -64,14 +62,14 @@ function employeeQuestions(){
                 showManagerQuestions(data);
             }
         })
-        Team.push(questions)
+        team.push(questions)
 }
 
 // function call to employeeQuestions
 employeeQuestions()
 
 //Manager Questions
-function showManagerQuestions(more){
+function showManagerQuestions(){
     const managerQuestions = [
         {
             type: "input",
@@ -80,15 +78,19 @@ function showManagerQuestions(more){
         }
     ]
     inquirer.prompt(managerQuestions ).then(data =>{
-        let moreInfo = new Manager(more.name,more.id, more.email, more.officeNumber)
-        Team.push(moreInfo)
+        let moreInfo = new Manager(
+            data.name,
+            data.id, 
+            data.email, 
+            data.officeNumber)
+        team.push(moreInfo)
         addMore()
     });
 }
 
 //Engineer Questions
 
-function  showEngineerQuestions(more){
+function  showEngineerQuestions(){
     const EngineerQuestions = [
         {
             type: "input",
@@ -98,8 +100,12 @@ function  showEngineerQuestions(more){
         }
     ]
     inquirer.prompt(EngineerQuestions ).then(data =>{
-        let moreInfo = new Engineer(more.name,more.id, more.email, more.GitHub)
-        Team.push(moreInfo)
+        let moreInfo = new Engineer(
+            data.name,
+            data.id, 
+            data.email, 
+            data.GitHub)
+        team.push(moreInfo)
         addMore()
     });
 
@@ -107,7 +113,7 @@ function  showEngineerQuestions(more){
 
 
 // Intern Question
-function  showInternQuestions(more){
+function  showInternQuestions(){
     const InternQuestions = [
         {
             type: "input",
@@ -116,12 +122,28 @@ function  showInternQuestions(more){
         }
     ]
     inquirer.prompt(InternQuestions).then(data =>{
-        let moreInfo = Intern(more.name, more.id, more.email, more.school)
+        let moreInfo = Intern(
+            data.name, 
+            data.id, 
+            data.email, 
+            data.school)
         Team.push(moreInfo)
         addMore()
 
     })
 }
+  // After the user has input all employees desired, call the `render` function (required
+  // above) and pass in an array containing all employee objects; the `render` function will
+  // generate and return a block of HTML including templated divs for each employee!
+  
+  
+ 
+// Write code to use inquirer to gather information about the development team members,
+// and to create objects for each team member (using the correct classes as blueprints!)
+
+
+
+
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
