@@ -92,7 +92,26 @@ function showManagerQuestions(){
 
 //creatTeam
 function creatTeam(){
-    
+    const create = [
+        {
+            name: "addMember",
+            type: "list",
+            message: "Would you like to add a team member?",
+            choices: [
+                "Yes, add more team member.",
+                "No, my team is complete."
+            ]
+        }
+    ]
+    inquirer
+        .prompt(create).then(data =>{
+            if (data.addMember === "Yes, add more team member." ){
+                employeeQuestions()
+
+            }else if(data.addMember === "No, my team is complete."){
+                 console.log("HTML file is created!")
+            }
+        })
 }
 
 //Engineer Questions
@@ -129,7 +148,7 @@ function  showInternQuestions(){
         }
     ]
     inquirer.prompt(InternQuestions).then(data =>{
-        let moreInfo = Intern(
+        let moreInfo = new Intern(
             data.name, 
             data.id, 
             data.email, 
