@@ -51,21 +51,22 @@ function employeeQuestions(){
             ]
         }
     ]
-    inquirer.prompt(questions).then(data =>{
+    inquirer
+    .prompt(questions)
+    .then(data =>{
 
-        
-            if (data.Title === "Engineer"){
+        if (data.Title === "Engineer"){
 
-                showEngineerQuestions(data);
-            }else if(data.Title === "Intern"){
+            showEngineerQuestions(data);
+        }else if(data.Title === "Intern"){
 
-                showInternQuestions(data);
-            }else if(data.Title === "Manager"){
-                showManagerQuestions(data);
-            }else{
-                creatTeam()
-            }
-        })
+            showInternQuestions(data);
+        }else if(data.Title === "Manager"){
+            showManagerQuestions(data);
+        }else{
+            creatTeam()
+        }
+    })
         team.push(questions)
 }
 
@@ -82,7 +83,9 @@ function showManagerQuestions(){
             message: "Pleas enter amnager's officeNumber."
         }
     ]
-    inquirer.prompt(managerQuestions ).then(data =>{
+    inquirer
+    .prompt(managerQuestions )
+    .then(data =>{
         let moreInfo = new Manager(
             data.name,
             data.id, 
@@ -107,17 +110,18 @@ function creatTeam(){
         }
     ]
     inquirer
-        .prompt(create).then(data =>{
-            if (data.addMember === "Yes, add more team member." ){
-                employeeQuestions();
+    .prompt(create)
+    .then(data =>{
+        if (data.addMember === "Yes, add more team member." ){
+            employeeQuestions();
 
-            }else if(data.addMember === "No, my team is complete."){
-                console.log("Your team is created!");
-              
+        }else if(data.addMember === "No, my team is complete."){
+            console.log("Your team is created!");
+            
 
-              
-            }
-        })
+            
+        }
+    })
 }
 
 //Engineer Questions
@@ -131,7 +135,9 @@ function  showEngineerQuestions(){
 
         }
     ]
-    inquirer.prompt(EngineerQuestions ).then(data =>{
+    inquirer
+    .prompt(EngineerQuestions )
+    .then(data =>{
         let moreInfo = new Engineer(
             data.name,
             data.id, 
@@ -153,7 +159,9 @@ function  showInternQuestions(){
             message: "Pleas enter intern's school."
         }
     ]
-    inquirer.prompt(InternQuestions).then(data =>{
+    inquirer
+    .prompt(InternQuestions)
+    .then(data =>{
         let moreInfo = new Intern(
             data.name, 
             data.id, 
