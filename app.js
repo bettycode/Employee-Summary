@@ -9,8 +9,10 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+
 const Employee = require("./lib/Employee");
 const { ADDRGETNETWORKPARAMS } = require("dns");
+const { Console } = require("console");
 
 const team = []
 
@@ -68,7 +70,8 @@ function employeeQuestions(){
 }
 
 // function call to employeeQuestions
-employeeQuestions()
+
+employeeQuestions();
 
 //Manager Questions
 function showManagerQuestions(){
@@ -76,7 +79,7 @@ function showManagerQuestions(){
         {
             type: "input",
             name: "officeNumber",
-            message: "Pleas enter officeNumber."
+            message: "Pleas enter amnager's officeNumber."
         }
     ]
     inquirer.prompt(managerQuestions ).then(data =>{
@@ -106,10 +109,13 @@ function creatTeam(){
     inquirer
         .prompt(create).then(data =>{
             if (data.addMember === "Yes, add more team member." ){
-                employeeQuestions()
+                employeeQuestions();
 
             }else if(data.addMember === "No, my team is complete."){
-                 console.log("HTML file is created!")
+                console.log("Your team is created!");
+              
+
+              
             }
         })
 }
@@ -121,7 +127,7 @@ function  showEngineerQuestions(){
         {
             type: "input",
             name: "Github",
-            message: "Pleas enter Github username."
+            message: "Pleas enter employee's Github username."
 
         }
     ]
@@ -144,7 +150,7 @@ function  showInternQuestions(){
         {
             type: "input",
             name: "school",
-            message: "Pleas enter your school."
+            message: "Pleas enter intern's school."
         }
     ]
     inquirer.prompt(InternQuestions).then(data =>{
@@ -158,6 +164,11 @@ function  showInternQuestions(){
 
     })
 }
+
+
+
+
+
   // After the user has input all employees desired, call the `render` function (required
   // above) and pass in an array containing all employee objects; the `render` function will
   // generate and return a block of HTML including templated divs for each employee!
