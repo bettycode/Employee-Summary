@@ -11,8 +11,6 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 const Employee = require("./lib/Employee");
-const { ADDRGETNETWORKPARAMS } = require("dns");
-const { Console } = require("console");
 
 const team = []
 
