@@ -31,6 +31,9 @@ Dependencies must be installed to run the application properly: "npm install"
 
 Team generator command line application.
 
+
+![Demo](2.gif)
+
 # License
 
 This project is license under the MIT license.
