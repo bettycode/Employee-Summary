@@ -32,6 +32,15 @@ Dependencies must be installed to run the application properly: "npm install"
 Team generator command line application.
 
 #
+
+![Demo](1.png)
+
+#
+
+![Demo](passedtests.png)
+
+
+#
 ![Demo](2.gif)
 
 #
@@ -39,6 +48,11 @@ Team generator command line application.
 ![Demo](3.gif)
 
 #
+
+
+![Demo](4.png)
+
+
 
 # License
 
