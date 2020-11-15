@@ -25,7 +25,7 @@ and then information about the team members. The user can input any number of te
 
 # Installation
 
-Dependencies must be installed to run the application properly: 
+Dependencies must be installed to run the application properly: "npm install"
 
 # Usage
 
@@ -41,7 +41,7 @@ This project is license under the MIT license.
 
 # Tests
 
-To run tests, you need to run the following command:npm run test
+To run tests, you need to run the following command: "npm run test"
 
 # Questions
 
