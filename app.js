@@ -148,6 +148,7 @@ function showInternQuestions() {
 
 
 // fuction to prompt users which employees they want to add.
+
 function createTeam() {
     inquirer
     .prompt([{
