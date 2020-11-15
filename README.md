@@ -43,7 +43,9 @@ To run tests, you need to run the following command:npm run test
 # Questions
 
 If you have any questions feel free to ask. 
-github username: @bettycode 
-Email: betty.haile.us@gmail.com
+
+* github username: @bettycode 
+
+* Email: betty.haile.us@gmail.com
 
 ## youtube video link: 
